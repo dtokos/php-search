@@ -1,0 +1,12 @@
+{
+    "name": "artvys/search",
+    "description": "Simple search library written in php",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Artvys\\Search\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
