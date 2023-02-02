@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,phpstorm,composer
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,phpstorm,composer
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,phpstorm,composer,phpunit
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,phpstorm,composer,phpunit
 
 ### Composer ###
 composer.phar
@@ -158,6 +158,17 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
+### PHPUnit ###
+# Covers PHPUnit
+# Reference: https://phpunit.de/
+
+# Generated files
+.phpunit.result.cache
+.phpunit.cache
+
+# Build data
+/build/
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -184,4 +195,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,phpstorm,composer
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,phpstorm,composer,phpunit
