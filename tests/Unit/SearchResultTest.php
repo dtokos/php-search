@@ -185,7 +185,7 @@ class SearchResultTest extends TestCase {
 	}
 
 	public function testSetLinks(): void {
-		$links = [$this->makeLink()];
+		$links = [$this->makeLink(title: 'lorem')];
 		$result = $this->makeResult(links: $this->makeLinks());
 		$result->setLinks($links);
 		$this->assertSame($links, $result->links());
@@ -199,7 +199,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependLink(): void {
 		$links = $this->makeLinks();
-		$newLink = $this->makeLink();
+		$newLink = $this->makeLink(title: 'lorem');
 		$result = $this->makeResult(links: $links);
 		$result->prependLink($newLink);
 		$this->assertSame([$newLink, ...$links], $result->links());
@@ -207,7 +207,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependLinks(): void {
 		$links = $this->makeLinks();
-		$newLinks = [$this->makeLink(), $this->makeLink()];
+		$newLinks = [$this->makeLink(title: 'lorem'), $this->makeLink(title: 'ipsum')];
 		$result = $this->makeResult(links: $links);
 		$result->prependLinks($newLinks);
 		$this->assertSame([...$newLinks, ...$links], $result->links());
@@ -215,7 +215,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendLink(): void {
 		$links = $this->makeLinks();
-		$newLink = $this->makeLink();
+		$newLink = $this->makeLink(title: 'lorem');
 		$result = $this->makeResult(links: $links);
 		$result->appendLink($newLink);
 		$this->assertSame([...$links, $newLink], $result->links());
@@ -223,7 +223,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendLinks(): void {
 		$links = $this->makeLinks();
-		$newLinks = [$this->makeLink(), $this->makeLink()];
+		$newLinks = [$this->makeLink(title: 'lorem'), $this->makeLink(title: 'ipsum')];
 		$result = $this->makeResult(links: $links);
 		$result->appendLinks($newLinks);
 		$this->assertSame([...$links, ...$newLinks], $result->links());
@@ -264,10 +264,10 @@ class SearchResultTest extends TestCase {
 
 	/** @return Link[] */
 	private function makeLinks(): array {
-		return [new Link(), new Link()];
+		return [$this->makeLink(title: 'foo'), $this->makeLink(title: 'bar')];
 	}
 
-	private function makeLink(): Link {
-		return new Link();
+	private function makeLink(string $title = ''): Link {
+		return Link::make($title, '');
 	}
 }
