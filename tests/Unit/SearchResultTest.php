@@ -83,7 +83,7 @@ class SearchResultTest extends TestCase {
 	}
 
 	public function testSetBreadcrumbs(): void {
-		$breadcrumbs = [$this->makeBreadcrumb()];
+		$breadcrumbs = [$this->makeBreadcrumb(title: 'lorem')];
 		$result = $this->makeResult(breadcrumbs: $this->makeBreadcrumbs());
 		$result->setBreadcrumbs($breadcrumbs);
 		$this->assertSame($breadcrumbs, $result->breadcrumbs());
@@ -97,7 +97,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependBreadcrumb(): void {
 		$breadcrumbs = $this->makeBreadcrumbs();
-		$newBreadcrumb = $this->makeBreadcrumb();
+		$newBreadcrumb = $this->makeBreadcrumb(title: 'lorem');
 		$result = $this->makeResult(breadcrumbs: $breadcrumbs);
 		$result->prependBreadcrumb($newBreadcrumb);
 		$this->assertSame([$newBreadcrumb, ...$breadcrumbs], $result->breadcrumbs());
@@ -105,7 +105,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependBreadcrumbs(): void {
 		$breadcrumbs = $this->makeBreadcrumbs();
-		$newBreadcrumbs = [$this->makeBreadcrumb(), $this->makeBreadcrumb()];
+		$newBreadcrumbs = [$this->makeBreadcrumb(title: 'lorem'), $this->makeBreadcrumb(title: 'ipsum')];
 		$result = $this->makeResult(breadcrumbs: $breadcrumbs);
 		$result->prependBreadcrumbs($newBreadcrumbs);
 		$this->assertSame([...$newBreadcrumbs, ...$breadcrumbs], $result->breadcrumbs());
@@ -113,7 +113,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendBreadcrumb(): void {
 		$breadcrumbs = $this->makeBreadcrumbs();
-		$newBreadcrumb = $this->makeBreadcrumb();
+		$newBreadcrumb = $this->makeBreadcrumb(title: 'lorem');
 		$result = $this->makeResult(breadcrumbs: $breadcrumbs);
 		$result->appendBreadcrumb($newBreadcrumb);
 		$this->assertSame([...$breadcrumbs, $newBreadcrumb], $result->breadcrumbs());
@@ -121,7 +121,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendBreadcrumbs(): void {
 		$breadcrumbs = $this->makeBreadcrumbs();
-		$newBreadcrumbs = [$this->makeBreadcrumb(), $this->makeBreadcrumb()];
+		$newBreadcrumbs = [$this->makeBreadcrumb(title: 'lorem'), $this->makeBreadcrumb(title: 'ipsum')];
 		$result = $this->makeResult(breadcrumbs: $breadcrumbs);
 		$result->appendBreadcrumbs($newBreadcrumbs);
 		$this->assertSame([...$breadcrumbs, ...$newBreadcrumbs], $result->breadcrumbs());
@@ -241,16 +241,16 @@ class SearchResultTest extends TestCase {
 	 * @return SearchResult
 	 */
 	public function makeResult(string $title = '', string $description = '', string $url = '', ?string $thumbnailUrl = null, string $helpText = '', array $breadcrumbs = [], array $tags = [], array $links = []): SearchResult {
-		return new SearchResult($title, $description, $url, $thumbnailUrl, $helpText, $breadcrumbs, $tags, $links);
+		return SearchResult::make($title, $description, $url, $thumbnailUrl, $helpText, $breadcrumbs, $tags, $links);
 	}
 
 	/** @return Breadcrumb[] */
 	private function makeBreadcrumbs(): array {
-		return [$this->makeBreadcrumb(), $this->makeBreadcrumb()];
+		return [$this->makeBreadcrumb(title: 'foo'), $this->makeBreadcrumb(title: 'bar')];
 	}
 
-	private function makeBreadcrumb(): Breadcrumb {
-		return new Breadcrumb();
+	private function makeBreadcrumb(string $title = ''): Breadcrumb {
+		return Breadcrumb::make($title, '');
 	}
 
 	/** @return Tag[] */
