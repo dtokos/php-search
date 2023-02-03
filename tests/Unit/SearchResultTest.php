@@ -134,7 +134,7 @@ class SearchResultTest extends TestCase {
 	}
 
 	public function testSetTags(): void {
-		$tags = [$this->makeTag()];
+		$tags = [$this->makeTag(title: 'lorem')];
 		$result = $this->makeResult(tags: $this->makeTags());
 		$result->setTags($tags);
 		$this->assertSame($tags, $result->tags());
@@ -148,7 +148,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependTag(): void {
 		$tags = $this->makeTags();
-		$newTag = $this->makeTag();
+		$newTag = $this->makeTag(title: 'lorem');
 		$result = $this->makeResult(tags: $tags);
 		$result->prependTag($newTag);
 		$this->assertSame([$newTag, ...$tags], $result->tags());
@@ -156,7 +156,7 @@ class SearchResultTest extends TestCase {
 
 	public function testPrependTags(): void {
 		$tags = $this->makeTags();
-		$newTags = [$this->makeTag(), $this->makeTag()];
+		$newTags = [$this->makeTag(title: 'lorem'), $this->makeTag(title: 'ipsum')];
 		$result = $this->makeResult(tags: $tags);
 		$result->prependTags($newTags);
 		$this->assertSame([...$newTags, ...$tags], $result->tags());
@@ -164,7 +164,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendTag(): void {
 		$tags = $this->makeTags();
-		$newTag = $this->makeTag();
+		$newTag = $this->makeTag(title: 'lorem');
 		$result = $this->makeResult(tags: $tags);
 		$result->appendTag($newTag);
 		$this->assertSame([...$tags, $newTag], $result->tags());
@@ -172,7 +172,7 @@ class SearchResultTest extends TestCase {
 
 	public function testAppendTags(): void {
 		$tags = $this->makeTags();
-		$newTags = [$this->makeTag(), $this->makeTag()];
+		$newTags = [$this->makeTag(title: 'lorem'), $this->makeTag(title: 'ipsum')];
 		$result = $this->makeResult(tags: $tags);
 		$result->appendTags($newTags);
 		$this->assertSame([...$tags, ...$newTags], $result->tags());
@@ -255,11 +255,11 @@ class SearchResultTest extends TestCase {
 
 	/** @return Tag[] */
 	private function makeTags(): array {
-		return [$this->makeTag(), $this->makeTag()];
+		return [$this->makeTag(title: 'foo'), $this->makeTag(title: 'bar')];
 	}
 
-	private function makeTag(): Tag {
-		return new Tag();
+	private function makeTag(string $title = ''): Tag {
+		return Tag::make($title, '');
 	}
 
 	/** @return Link[] */
