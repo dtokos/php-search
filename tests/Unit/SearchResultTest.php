@@ -229,6 +229,31 @@ class SearchResultTest extends TestCase {
 		$this->assertSame([...$links, ...$newLinks], $result->links());
 	}
 
+	public function testJsonSerialize(): void {
+		$expected = [
+			'title' => 'foo title',
+			'description' => 'foo desc',
+			'url' => 'https://foo.foo',
+			'thumbnailUrl' => 'https://foo.foo/thumbnail',
+			'helpText' => 'foo help',
+			'breadcrumbs' => [['title' => 'b1', 'url' => 'https://foo.foo/b1']],
+			'tags' => [['title' => 't1', 'url' => 'https://foo.foo/t1', 'color' => '#f00']],
+			'links' => [['title' => 'l1', 'url' => 'https://foo.foo/l1']],
+		];
+		$result = $this->makeResult(
+			title: $expected['title'],
+			description: $expected['description'],
+			url: $expected['url'],
+			thumbnailUrl: $expected['thumbnailUrl'],
+			helpText: $expected['helpText'],
+			breadcrumbs: [$this->makeBreadcrumb(title: $expected['breadcrumbs'][0]['title'], url: $expected['breadcrumbs'][0]['url'])],
+			tags: [$this->makeTag(title: $expected['tags'][0]['title'], url: $expected['tags'][0]['url'], color: $expected['tags'][0]['color'])],
+			links: [$this->makeLink(title: $expected['links'][0]['title'], url: $expected['links'][0]['url'])]
+		);
+
+		$this->assertJsonStringEqualsJsonString((string)json_encode($expected), (string)json_encode($result));
+	}
+
 	/**
 	 * @param string $title
 	 * @param string $description
@@ -249,8 +274,8 @@ class SearchResultTest extends TestCase {
 		return [$this->makeBreadcrumb(title: 'foo'), $this->makeBreadcrumb(title: 'bar')];
 	}
 
-	private function makeBreadcrumb(string $title = ''): Breadcrumb {
-		return Breadcrumb::make($title, '');
+	private function makeBreadcrumb(string $title = '', string $url = ''): Breadcrumb {
+		return Breadcrumb::make($title, $url);
 	}
 
 	/** @return Tag[] */
@@ -258,8 +283,8 @@ class SearchResultTest extends TestCase {
 		return [$this->makeTag(title: 'foo'), $this->makeTag(title: 'bar')];
 	}
 
-	private function makeTag(string $title = ''): Tag {
-		return Tag::make($title, '');
+	private function makeTag(string $title = '', string $url = '', mixed $color = null): Tag {
+		return Tag::make($title, $url, $color);
 	}
 
 	/** @return Link[] */
@@ -267,7 +292,7 @@ class SearchResultTest extends TestCase {
 		return [$this->makeLink(title: 'foo'), $this->makeLink(title: 'bar')];
 	}
 
-	private function makeLink(string $title = ''): Link {
-		return Link::make($title, '');
+	private function makeLink(string $title = '', string $url = ''): Link {
+		return Link::make($title, $url);
 	}
 }

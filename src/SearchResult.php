@@ -5,8 +5,9 @@ namespace Artvys\Search;
 use Artvys\Search\Result\Breadcrumb;
 use Artvys\Search\Result\Link;
 use Artvys\Search\Result\Tag;
+use JsonSerializable;
 
-class SearchResult {
+class SearchResult implements JsonSerializable {
 	private string $title;
 	private string $description;
 	private string $url;
@@ -243,5 +244,19 @@ class SearchResult {
 	 */
 	private function append(array $first, array $second): array {
 		return array_merge(array_values($first), array_values($second));
+	}
+
+	/** @return array<string, mixed> */
+	public function jsonSerialize(): array {
+		return [
+			'title' => $this->title(),
+			'description' => $this->description(),
+			'url' => $this->url(),
+			'thumbnailUrl' => $this->thumbnailUrl(),
+			'helpText' => $this->helpText(),
+			'breadcrumbs' => $this->breadcrumbs(),
+			'tags' => $this->tags(),
+			'links' => $this->links(),
+		];
 	}
 }

@@ -2,7 +2,9 @@
 
 namespace Artvys\Search\Result;
 
-class Tag {
+use JsonSerializable;
+
+class Tag implements JsonSerializable {
 	private string $title;
 	private string $url;
 	private mixed $color;
@@ -46,5 +48,14 @@ class Tag {
 
 	public function hasColor(): bool {
 		return !empty($this->color);
+	}
+
+	/** @return array<string, mixed> */
+	public function jsonSerialize(): array {
+		return [
+			'title' => $this->title(),
+			'url' => $this->url(),
+			'color' => $this->color(),
+		];
 	}
 }

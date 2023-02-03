@@ -46,6 +46,12 @@ class TagTest extends TestCase {
 		$this->assertFalse($tag->hasColor());
 	}
 
+	public function testJsonSerialize(): void {
+		$expected = ['title' => 'foo', 'url' => 'https://foo.foo', 'color' => '#000'];
+		$tag = $this->makeTag(title: $expected['title'], url: $expected['url'], color: $expected['color']);
+		$this->assertJsonStringEqualsJsonString((string)json_encode($expected), (string)json_encode($tag));
+	}
+
 	private function makeTag(string $title = '', string $url = '', mixed $color = null): Tag {
 		return Tag::make($title, $url, $color);
 	}

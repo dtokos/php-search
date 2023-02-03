@@ -2,7 +2,9 @@
 
 namespace Artvys\Search\Result;
 
-class Link {
+use JsonSerializable;
+
+class Link implements JsonSerializable {
 	private string $title;
 	private string $url;
 
@@ -31,5 +33,13 @@ class Link {
 	public function setUrl(string $url): static {
 		$this->url = $url;
 		return $this;
+	}
+
+	/** @return array<string, mixed> */
+	public function jsonSerialize(): array {
+		return [
+			'title' => $this->title(),
+			'url' => $this->url(),
+		];
 	}
 }

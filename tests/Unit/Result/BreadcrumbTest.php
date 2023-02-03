@@ -28,6 +28,12 @@ class BreadcrumbTest extends TestCase {
 		$this->assertSame('https://bar.bar', $breadcrumb->url());
 	}
 
+	public function testJsonSerialize(): void {
+		$expected = ['title' => 'foo', 'url' => 'https://foo.foo'];
+		$breadcrumb = $this->makeBreadcrumb(title: $expected['title'], url: $expected['url']);
+		$this->assertJsonStringEqualsJsonString((string)json_encode($expected), (string)json_encode($breadcrumb));
+	}
+
 	private function makeBreadcrumb(string $title = '', string $url = ''): Breadcrumb {
 		return Breadcrumb::make($title, $url);
 	}

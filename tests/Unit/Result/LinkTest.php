@@ -28,6 +28,12 @@ class LinkTest extends TestCase {
 		$this->assertSame('https://bar.bar', $link->url());
 	}
 
+	public function testJsonSerialize(): void {
+		$expected = ['title' => 'foo', 'url' => 'https://foo.foo'];
+		$link = $this->makeLink(title: $expected['title'], url: $expected['url']);
+		$this->assertJsonStringEqualsJsonString((string)json_encode($expected), (string)json_encode($link));
+	}
+
 	private function makeLink(string $title = '', string $url = ''): Link {
 		return Link::make($title, $url);
 	}
