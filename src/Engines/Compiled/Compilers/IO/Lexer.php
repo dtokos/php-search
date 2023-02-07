@@ -46,7 +46,7 @@ class Lexer implements CompilerInput {
 		];
 
 		if ($action = $map[$symbol] ?? false) {
-			$action();
+			$action($symbol);
 			$this->advance();
 			return true;
 		}
