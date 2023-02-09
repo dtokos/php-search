@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class IOCompilerTest extends TestCase {
 	public function testCompile(): void {
-		$expected = new CompilationResult();
+		$expected = new CompilationResult([]);
 		$input = $this->createStub(CompilerInput::class);
 		$output = $this->createStub(CompilerOutput::class);
 		$output->method('result')->willReturn($expected);

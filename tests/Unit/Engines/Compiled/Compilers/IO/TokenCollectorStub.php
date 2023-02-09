@@ -16,12 +16,12 @@ class TokenCollectorStub implements TokenCollector {
 		$this->tokens[] = $symbol;
 	}
 
-	public function comma(): void {
-		$this->tokens[] = ',';
+	public function comma(string $symbol): void {
+		$this->tokens[] = $symbol;
 	}
 
-	public function colon(): void {
-		$this->tokens[] = ':';
+	public function colon(string $symbol): void {
+		$this->tokens[] = $symbol;
 	}
 
 	public function eof(): void {
