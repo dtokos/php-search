@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Engines\Compiled\Compilers\IO;
+namespace Tests\Stubs\Engines\Compiled\Compilers\IO;
 
 use Artvys\Search\Engines\Compiled\Compilers\IO\TokenCollector;
 

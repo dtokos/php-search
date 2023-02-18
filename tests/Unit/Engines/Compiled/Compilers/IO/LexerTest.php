@@ -7,6 +7,7 @@ use Artvys\Search\Engines\Compiled\Compilers\IO\TokenCollector;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\Engines\Compiled\Compilers\IO\TokenCollectorStub;
 
 class LexerTest extends TestCase {
 	private const SYMBOLS = [

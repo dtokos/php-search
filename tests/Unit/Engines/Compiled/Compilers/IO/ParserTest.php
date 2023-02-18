@@ -6,6 +6,7 @@ use Artvys\Search\Engines\Compiled\Compilers\IO\Parser;
 use Artvys\Search\Engines\Compiled\Compilers\IO\SearchSourceProvider;
 use Artvys\Search\Engines\Compiled\SearchSource;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\Engines\Compiled\Compilers\IO\ResultBuilderStub;
 
 class ParserTest extends TestCase {
 	/** @var array<string, SearchSource> */
