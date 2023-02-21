@@ -4,13 +4,13 @@ namespace Artvys\Search\Engines\Compiled\SearchSources\Field;
 
 interface ResultQueryBuilder {
 	/**
-	 * @param callable(ResultQueryBuilder): void $buildingBlock
+	 * @param callable(ResultQueryBuilder): ResultQueryBuilder $buildingBlock
 	 * @return $this
 	 */
 	public function and(callable $buildingBlock): static;
 
 	/**
-	 * @param callable(ResultQueryBuilder): void $buildingBlock
+	 * @param callable(ResultQueryBuilder): ResultQueryBuilder $buildingBlock
 	 * @return $this
 	 */
 	public function or(callable $buildingBlock): static;
