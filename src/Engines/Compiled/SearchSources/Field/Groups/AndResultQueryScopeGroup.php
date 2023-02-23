@@ -21,6 +21,8 @@ class AndResultQueryScopeGroup implements ResultQueryScopeGroup {
 			$builder->and(function(ResultQueryBuilder $b) use ($query) {
 				foreach ($this->scopes as $scope)
 					$scope->apply($b, $query);
+
+				return $b;
 			});
 		}
 

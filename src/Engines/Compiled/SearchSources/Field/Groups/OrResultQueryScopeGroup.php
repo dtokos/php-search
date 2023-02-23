@@ -21,6 +21,8 @@ class OrResultQueryScopeGroup implements ResultQueryScopeGroup {
 			$builder->or(function(ResultQueryBuilder $b) use ($query) {
 				foreach ($this->scopes as $scope)
 					$scope->apply($b, $query);
+
+				return $b;
 			});
 		}
 
