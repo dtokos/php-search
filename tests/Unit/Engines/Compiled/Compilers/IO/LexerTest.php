@@ -42,7 +42,7 @@ class LexerTest extends TestCase {
 		$this->assertSame([$symbol, 'eof'], $this->collector->tokens);
 	}
 
-	/** @return array<int, string[]> */
+	/** @return array{string[]} */
 	public static function symbolsProvider(): array {
 		return array_map(fn(string $symbol) => [$symbol], self::SYMBOLS);
 	}
@@ -58,7 +58,7 @@ class LexerTest extends TestCase {
 		$this->assertSame([$token, 'eof'], $this->collector->tokens);
 	}
 
-	/** @return array<int, string[]> */
+	/** @return array{string[]} */
 	public static function tokensProvider(): array {
 		return [['foo'], ['bar'], ['bar'], ['lorem'], ['ipsum']];
 	}

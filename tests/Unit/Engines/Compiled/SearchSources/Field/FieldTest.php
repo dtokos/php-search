@@ -19,7 +19,7 @@ class FieldTest extends TestCase {
 		$this->assertResult(Field::startsWith('foo'), $tokens, $expected);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function startsWithProvider(): array {
 		return [
 			[[], ''],
@@ -48,7 +48,7 @@ class FieldTest extends TestCase {
 		$this->assertResult(Field::equals('foo'), $tokens, $expected);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function equalsProvider(): array {
 		return [
 			[[], ''],
@@ -67,7 +67,7 @@ class FieldTest extends TestCase {
 		$this->assertResult(Field::endsWith('foo'), $tokens, $expected);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function endsWithProvider(): array {
 		return [
 			[[], ''],
@@ -86,7 +86,7 @@ class FieldTest extends TestCase {
 		$this->assertResult(Field::contains('foo'), $tokens, $expected);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function containsProvider(): array {
 		return [
 			[[], ''],

@@ -25,7 +25,7 @@ class FieldBuilderTest extends TestCase {
 		);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function andProvider(): array {
 		return [
 			[[], 'AND ()'],
@@ -47,7 +47,7 @@ class FieldBuilderTest extends TestCase {
 		, false);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function orProvider(): array {
 		return [
 			[[], 'OR ()'],
@@ -79,7 +79,7 @@ class FieldBuilderTest extends TestCase {
 		);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function unlessProvider(): array {
 		return [
 			[[], 'AND ()'],
@@ -111,7 +111,7 @@ class FieldBuilderTest extends TestCase {
 		);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function ifProvider(): array {
 		return [
 			[[], 'AND ()'],
@@ -142,7 +142,7 @@ class FieldBuilderTest extends TestCase {
 		);
 	}
 
-	/** @return array<int, array{0: string[], 1: string}> */
+	/** @return array{array{string[], string}} */
 	public function example1Provider(): array {
 		return [
 			[[], 'AND (AND (OR ()))'],
