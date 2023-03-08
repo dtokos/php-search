@@ -3,8 +3,8 @@
 namespace Artvys\Search\Engines\Compiled\Compilers\IO;
 
 class Lexer implements CompilerInput {
-	private readonly TokenCollector $collector;
-	private string $lexedQuery = '';
+	protected readonly TokenCollector $collector;
+	protected string $lexedQuery = '';
 
 	public function __construct(TokenCollector $collector) {
 		$this->collector = $collector;
@@ -19,7 +19,7 @@ class Lexer implements CompilerInput {
 		$this->collector->eof();
 	}
 
-	private function lex(): void {
+	protected function lex(): void {
 		(
 			$this->skipWhitespace()
 			|| $this->lexReservedSymbols()
@@ -29,7 +29,7 @@ class Lexer implements CompilerInput {
 		);
 	}
 
-	private function skipWhitespace(): bool {
+	protected function skipWhitespace(): bool {
 		if ($matches = $this->match('/^\s+(.*)/')) {
 			$this->lexedQuery = $matches[1];
 			return true;
@@ -38,7 +38,7 @@ class Lexer implements CompilerInput {
 		return false;
 	}
 
-	private function lexReservedSymbols(): bool {
+	protected function lexReservedSymbols(): bool {
 		$symbol = $this->lexedQuery[0] ?? '';
 		$map = [
 			',' => $this->collector->comma(...),
@@ -54,7 +54,7 @@ class Lexer implements CompilerInput {
 		return false;
 	}
 
-	private function lexSymbol(): bool {
+	protected function lexSymbol(): bool {
 		$symbol = $this->lexedQuery[0] ?? '';
 
 		if (in_array($symbol, $this->symbols())) {
@@ -67,11 +67,11 @@ class Lexer implements CompilerInput {
 	}
 
 	/** @return string[] */
-	private function symbols(): array {
+	protected function symbols(): array {
 		return ['!', '#', '$', '%', '&', '*', '+', '-', '.', '/', ';', '<', '=', '>', '?', '@', '\\', '^', '_', '|', '~'];
 	}
 
-	private function lexToken(): bool {
+	protected function lexToken(): bool {
 		if ($matches = $this->match('/^([^\s,:]+)(.*)/')) {
 			$this->collector->token($matches[1]);
 			$this->lexedQuery = $matches[2];
@@ -94,7 +94,7 @@ class Lexer implements CompilerInput {
 	 * @param string $pattern
 	 * @return string[]|false
 	 */
-	private function match(string $pattern): array|false {
+	protected function match(string $pattern): array|false {
 		$matches = [];
 
 		if (!preg_match($pattern, $this->lexedQuery, $matches))
@@ -103,7 +103,7 @@ class Lexer implements CompilerInput {
 		return $matches;
 	}
 
-	private function advance(): void {
+	protected function advance(): void {
 		$this->lexedQuery = mb_substr($this->lexedQuery, 1);
 	}
 }

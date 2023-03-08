@@ -8,9 +8,9 @@ use Artvys\Search\Engines\Compiled\CompiledQuery;
 
 class Builder implements ResultBuilder, CompilerOutput {
 	/** @var string[] */
-	private array $tokens = [];
+	protected array $tokens = [];
 	/** @var CompiledBinding[] */
-	private array $bindings = [];
+	protected array $bindings = [];
 
 	public function addToken(string $token): void {
 		$this->tokens[] = $token;

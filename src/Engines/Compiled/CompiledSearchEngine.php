@@ -6,8 +6,8 @@ use Artvys\Search\SearchEngine;
 use Artvys\Search\SearchResult;
 
 class CompiledSearchEngine implements SearchEngine {
-	private readonly CompilerFactory $compilerFactory;
-	private readonly FetchingStrategy $fetchingStrategy;
+	protected readonly CompilerFactory $compilerFactory;
+	protected readonly FetchingStrategy $fetchingStrategy;
 
 	public function __construct(CompilerFactory $compilerFactory, FetchingStrategy $fetchingStrategy) {
 		$this->compilerFactory = $compilerFactory;
@@ -22,11 +22,11 @@ class CompiledSearchEngine implements SearchEngine {
 		return $this->fetchResults($result, $limit);
 	}
 
-	private function makeCompiler(): Compiler {
+	protected function makeCompiler(): Compiler {
 		return $this->compilerFactory->make();
 	}
 
-	private function compile(string $query, Compiler $compiler): CompilationResult {
+	protected function compile(string $query, Compiler $compiler): CompilationResult {
 		return $compiler->compile($query);
 	}
 
@@ -35,7 +35,7 @@ class CompiledSearchEngine implements SearchEngine {
 	 * @param int $limit
 	 * @return SearchResult[]
 	 */
-	private function fetchResults(CompilationResult $result, int $limit): array {
+	protected function fetchResults(CompilationResult $result, int $limit): array {
 		return $this->fetchingStrategy->fetch($result, $limit);
 	}
 }

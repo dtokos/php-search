@@ -5,9 +5,9 @@ namespace Artvys\Search\Result;
 use JsonSerializable;
 
 class Tag implements JsonSerializable {
-	private string $title;
-	private string $url;
-	private mixed $color;
+	protected string $title;
+	protected string $url;
+	protected mixed $color;
 
 	public static function make(string $title, string $url, mixed $color = null): self {
 		return new self($title, $url, $color);

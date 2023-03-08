@@ -6,11 +6,11 @@ use Artvys\Search\Engines\Compiled\Compilers\IO\SearchSourceProvider;
 
 class SearchSourceRegistry implements SearchSourceProvider {
 	/** @var SearchSource[] */
-	private array $sources = [];
+	protected array $sources = [];
 	/** @var array<string, int[]> */
-	private array $aliasMap = [];
+	protected array $aliasMap = [];
 	/** @var int[] */
-	private array $unaliased = [];
+	protected array $unaliased = [];
 
 	/**
 	 * @param SearchSource $source
@@ -28,7 +28,7 @@ class SearchSourceRegistry implements SearchSourceProvider {
 		return $this;
 	}
 
-	private function registerSource(SearchSource $source): int {
+	protected function registerSource(SearchSource $source): int {
 		$this->sources[] = $source;
 		return array_key_last($this->sources);
 	}
@@ -38,14 +38,14 @@ class SearchSourceRegistry implements SearchSourceProvider {
 	 * @param string[] $aliases
 	 * @return void
 	 */
-	private function registerAliases(int $key, array $aliases): void {
+	protected function registerAliases(int $key, array $aliases): void {
 		foreach ($aliases as $alias) {
 			$this->aliasMap[$alias] ??= [];
 			$this->aliasMap[$alias][] = $key;
 		}
 	}
 
-	private function registerUnaliased(int $key): void {
+	protected function registerUnaliased(int $key): void {
 		$this->unaliased[] = $key;
 	}
 
@@ -78,7 +78,7 @@ class SearchSourceRegistry implements SearchSourceProvider {
 	 * @param int[] $keys
 	 * @return SearchSource[]
 	 */
-	private function forKeys(array $keys): array {
+	protected function forKeys(array $keys): array {
 		return array_map(fn(int $key) => $this->sources[$key], $keys);
 	}
 }

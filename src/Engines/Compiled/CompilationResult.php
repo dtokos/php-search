@@ -4,7 +4,7 @@ namespace Artvys\Search\Engines\Compiled;
 
 class CompilationResult {
 	/** @var CompiledBinding[] */
-	private array $bindings;
+	protected array $bindings;
 
 	/**
 	 * @param CompiledBinding[] $bindings

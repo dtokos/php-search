@@ -3,8 +3,8 @@
 namespace Artvys\Search\Engines\Compiled\SearchSources\Field;
 
 class FieldBuilder implements SearchFieldBuilder {
-	private readonly ResultQueryScopeGroupFactory $factory;
-	private ResultQueryScopeGroup $group;
+	protected readonly ResultQueryScopeGroupFactory $factory;
+	protected ResultQueryScopeGroup $group;
 
 	public function __construct(ResultQueryScopeGroupFactory $factory, ResultQueryScopeGroup $group) {
 		$this->factory = $factory;

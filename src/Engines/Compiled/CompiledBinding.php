@@ -3,9 +3,9 @@
 namespace Artvys\Search\Engines\Compiled;
 
 class CompiledBinding {
-	private CompiledQuery $query;
+	protected CompiledQuery $query;
 	/** @var SearchSource[] */
-	private array $sources;
+	protected array $sources;
 
 	/**
 	 * @param CompiledQuery $query

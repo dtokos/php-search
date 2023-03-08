@@ -8,18 +8,18 @@ use Artvys\Search\Result\Tag;
 use JsonSerializable;
 
 class SearchResult implements JsonSerializable {
-	private string $title;
-	private string $description;
-	private string $url;
+	protected string $title;
+	protected string $description;
+	protected string $url;
 
-	private ?string $thumbnailUrl;
-	private string $helpText;
+	protected ?string $thumbnailUrl;
+	protected string $helpText;
 	/** @var Breadcrumb[] */
-	private array $breadcrumbs;
+	protected array $breadcrumbs;
 	/** @var Tag[] */
-	private array $tags;
+	protected array $tags;
 	/** @var Link[] */
-	private array $links;
+	protected array $links;
 
 	/**
 	 * @param string $title
@@ -242,7 +242,7 @@ class SearchResult implements JsonSerializable {
 	 * @param T[] $second
 	 * @return T[]
 	 */
-	private function append(array $first, array $second): array {
+	protected function append(array $first, array $second): array {
 		return array_merge(array_values($first), array_values($second));
 	}
 

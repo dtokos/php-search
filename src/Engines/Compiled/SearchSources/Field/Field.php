@@ -5,9 +5,9 @@ namespace Artvys\Search\Engines\Compiled\SearchSources\Field;
 use Artvys\Search\Engines\Compiled\CompiledQuery;
 
 class Field implements SearchField {
-	private string $fieldName;
+	protected string $fieldName;
 	/** @var callable(ResultQueryBuilder, string, string): ResultQueryBuilder */
-	private $strategy;
+	protected $strategy;
 
 	public static function eq(string $fieldName): self {
 		return static::equals($fieldName);
@@ -41,7 +41,7 @@ class Field implements SearchField {
 		);
 	}
 
-	private function __construct(string $fieldName, callable $strategy) {
+	protected function __construct(string $fieldName, callable $strategy) {
 		$this->fieldName = $fieldName;
 		$this->strategy = $strategy;
 	}
@@ -54,11 +54,11 @@ class Field implements SearchField {
 		};
 	}
 
-	private function applyToken(ResultQueryBuilder $builder, string $token): ResultQueryBuilder {
+	protected function applyToken(ResultQueryBuilder $builder, string $token): ResultQueryBuilder {
 		return ($this->strategy)($builder, $this->fieldName, $token);
 	}
 
-	private function applyAllTokens(ResultQueryBuilder $builder, CompiledQuery $query): ResultQueryBuilder {
+	protected function applyAllTokens(ResultQueryBuilder $builder, CompiledQuery $query): ResultQueryBuilder {
 		return $builder->or(function(ResultQueryBuilder $b) use ($query) {
 			foreach ($query->tokens() as $token)
 				$this->applyToken($b, $token);

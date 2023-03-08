@@ -6,8 +6,8 @@ use Artvys\Search\Engines\Compiled\CompilationResult;
 use Artvys\Search\Engines\Compiled\Compiler;
 
 class IOCompiler implements Compiler {
-	private readonly CompilerInput $input;
-	private readonly CompilerOutput $output;
+	protected readonly CompilerInput $input;
+	protected readonly CompilerOutput $output;
 
 	public function __construct(CompilerInput $input, CompilerOutput $output) {
 		$this->input = $input;

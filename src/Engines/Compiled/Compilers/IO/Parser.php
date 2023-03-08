@@ -3,27 +3,27 @@
 namespace Artvys\Search\Engines\Compiled\Compilers\IO;
 
 class Parser implements TokenCollector {
-	private const S_START = 's_start';
-	private const S_SHORT_ALIAS = 's_short_alias';
-	private const S_ALIAS = 's_alias';
-	private const S_COMMA = 's_comma';
-	private const S_QUERY = 's_query';
-	private const S_END = 's_end';
+	protected const S_START = 's_start';
+	protected const S_SHORT_ALIAS = 's_short_alias';
+	protected const S_ALIAS = 's_alias';
+	protected const S_COMMA = 's_comma';
+	protected const S_QUERY = 's_query';
+	protected const S_END = 's_end';
 
-	private const E_SHORT_ALIAS = 'e_short_alias';
-	private const E_ALIAS = 'e_alias';
-	private const E_TOKEN = 'e_token';
-	private const E_COMMA = 'e_comma';
-	private const E_COLON = 'e_colon';
-	private const E_EOF = 'e_eof';
+	protected const E_SHORT_ALIAS = 'e_short_alias';
+	protected const E_ALIAS = 'e_alias';
+	protected const E_TOKEN = 'e_token';
+	protected const E_COMMA = 'e_comma';
+	protected const E_COLON = 'e_colon';
+	protected const E_EOF = 'e_eof';
 
-	private readonly ResultBuilder $builder;
-	private readonly SearchSourceProvider $provider;
+	protected readonly ResultBuilder $builder;
+	protected readonly SearchSourceProvider $provider;
 
-	private string $state = self::S_START;
-	private string $token = '';
+	protected string $state = self::S_START;
+	protected string $token = '';
 	/** @var string[] */
-	private array $aliases = [];
+	protected array $aliases = [];
 
 	public function __construct(ResultBuilder $builder, SearchSourceProvider $provider) {
 		$this->builder = $builder;
@@ -50,7 +50,7 @@ class Parser implements TokenCollector {
 		$this->handle(self::E_EOF);
 	}
 
-	private function handle(string $event, string $token = ''): void {
+	protected function handle(string $event, string $token = ''): void {
 		$this->token = $token;
 
 		list($newState, $action) = match ($this->state) {
@@ -70,7 +70,7 @@ class Parser implements TokenCollector {
 	 * @param string $event
 	 * @return array{string, callable}
 	 */
-	private function handleStart(string $event): array {
+	protected function handleStart(string $event): array {
 		return match ($event) {
 			self::E_SHORT_ALIAS => [self::S_SHORT_ALIAS, $this->addAlias(...)],
 			self::E_ALIAS => [self::S_ALIAS, $this->addAlias(...)],
@@ -83,7 +83,7 @@ class Parser implements TokenCollector {
 	 * @param string $event
 	 * @return array{string, callable}
 	 */
-	private function handleShortAlias(string $event): array {
+	protected function handleShortAlias(string $event): array {
 		return match ($event) {
 			self::E_SHORT_ALIAS => [self::S_SHORT_ALIAS, $this->addAlias(...)],
 			self::E_COMMA => [self::S_COMMA, $this->noOp(...)],
@@ -97,7 +97,7 @@ class Parser implements TokenCollector {
 	 * @param string $event
 	 * @return array{string, callable}
 	 */
-	private function handleAlias(string $event): array {
+	protected function handleAlias(string $event): array {
 		return match ($event) {
 			self::E_COMMA => [self::S_COMMA, $this->noOp(...)],
 			self::E_COLON => [self::S_QUERY, $this->noOp(...)],
@@ -110,7 +110,7 @@ class Parser implements TokenCollector {
 	 * @param string $event
 	 * @return array{string, callable}
 	 */
-	private function handleComma(string $event): array {
+	protected function handleComma(string $event): array {
 		return match ($event) {
 			self::E_SHORT_ALIAS => [self::S_SHORT_ALIAS, $this->addAlias(...)],
 			self::E_ALIAS => [self::S_ALIAS, $this->addAlias(...)],
@@ -125,26 +125,26 @@ class Parser implements TokenCollector {
 	 * @param string $event
 	 * @return array{string, callable}
 	 */
-	private function handleQuery(string $event): array {
+	protected function handleQuery(string $event): array {
 		return match ($event) {
 			self::E_EOF => [self::S_END, $this->addQuery(...)],
 			default => [self::S_QUERY, $this->addToken(...)],
 		};
 	}
 
-	private function addAlias(): void {
+	protected function addAlias(): void {
 		$this->aliases[] = $this->token;
 	}
 
-	private function addToken(): void {
+	protected function addToken(): void {
 		$this->builder->addToken($this->token);
 	}
 
-	private function addQuery(): void {
+	protected function addQuery(): void {
 		$this->builder->addQuery(
 			empty($this->aliases) ? $this->provider->unaliased() : $this->provider->for($this->aliases)
 		);
 	}
 
-	private function noOp(): void {}
+	protected function noOp(): void {}
 }

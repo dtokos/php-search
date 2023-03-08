@@ -5,8 +5,8 @@ namespace Artvys\Search\Result;
 use JsonSerializable;
 
 class Breadcrumb implements JsonSerializable {
-	private string $title;
-	private string $url;
+	protected string $title;
+	protected string $url;
 
 	public static function make(string $title, string $url): self {
 		return new self($title, $url);

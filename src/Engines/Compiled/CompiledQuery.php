@@ -6,7 +6,7 @@ use Stringable;
 
 class CompiledQuery implements Stringable {
 	/** @var string[] */
-	private array $tokens;
+	protected array $tokens;
 
 	/**
 	 * @param string[] $tokens
@@ -28,7 +28,7 @@ class CompiledQuery implements Stringable {
 		return implode($separator, $this->tokens());
 	}
 
-	private function separator(): string {
+	protected function separator(): string {
 		return ' ';
 	}
 

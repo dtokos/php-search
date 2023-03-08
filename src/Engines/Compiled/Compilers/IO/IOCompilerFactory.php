@@ -5,7 +5,7 @@ namespace Artvys\Search\Engines\Compiled\Compilers\IO;
 use Artvys\Search\Engines\Compiled\CompilerFactory;
 
 class IOCompilerFactory implements CompilerFactory {
-	private readonly SearchSourceProvider $provider;
+	protected readonly SearchSourceProvider $provider;
 
 	public function __construct(SearchSourceProvider $provider) {
 		$this->provider = $provider;

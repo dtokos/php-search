@@ -9,7 +9,7 @@ use Artvys\Search\Engines\Compiled\SearchSources\Field\ResultQueryScopeGroup;
 
 class OrResultQueryScopeGroup implements ResultQueryScopeGroup {
 	/** @var ResultQueryScope[] */
-	private array $scopes = [];
+	protected array $scopes = [];
 
 	public function add(ResultQueryScope $scope): static {
 		$this->scopes[] = $scope;
