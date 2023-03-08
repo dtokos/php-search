@@ -60,4 +60,8 @@ class ResultQueryBuilderStub implements ResultQueryBuilder {
 
 		return $builder;
 	}
+
+	public function results(int $limit): array {
+		return [];
+	}
 }
