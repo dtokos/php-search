@@ -62,6 +62,8 @@ class Field implements SearchField {
 		return $builder->or(function(ResultQueryBuilder $b) use ($query) {
 			foreach ($query->tokens() as $token)
 				$this->applyToken($b, $token);
+
+			return $b;
 		});
 	}
 }

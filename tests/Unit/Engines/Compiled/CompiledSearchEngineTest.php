@@ -6,9 +6,13 @@ use Artvys\Search\Engines\Compiled\CompiledSearchEngine;
 use Artvys\Search\Engines\Compiled\CompilerFactory;
 use Artvys\Search\Engines\Compiled\FetchingStrategy;
 use Artvys\Search\SearchResult;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class CompiledSearchEngineTest extends TestCase {
+	/**
+	 * @throws Exception
+	 */
 	public function testSearch(): void {
 		$expected = $this->makeResults();
 		$factory = $this->createStub(CompilerFactory::class);

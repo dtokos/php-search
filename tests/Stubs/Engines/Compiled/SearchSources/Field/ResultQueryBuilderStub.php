@@ -5,6 +5,7 @@ namespace Tests\Stubs\Engines\Compiled\SearchSources\Field;
 use Artvys\Search\Engines\Compiled\SearchSources\Field\ResultQueryBuilder;
 
 class ResultQueryBuilderStub implements ResultQueryBuilder {
+	/** @var string[] */
 	private array $parts = [];
 	private string $group = '';
 

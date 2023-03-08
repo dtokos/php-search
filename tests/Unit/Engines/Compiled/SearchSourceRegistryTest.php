@@ -4,6 +4,7 @@ namespace Tests\Unit\Engines\Compiled;
 
 use Artvys\Search\Engines\Compiled\SearchSource;
 use Artvys\Search\Engines\Compiled\SearchSourceRegistry;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class SearchSourceRegistryTest extends TestCase {
@@ -11,6 +12,9 @@ class SearchSourceRegistryTest extends TestCase {
 	private array $sources;
 	private SearchSourceRegistry $registry;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->sources = [
 			'@' => $this->createStub(SearchSource::class),

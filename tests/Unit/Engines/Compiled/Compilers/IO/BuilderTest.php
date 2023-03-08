@@ -4,6 +4,7 @@ namespace Tests\Unit\Engines\Compiled\Compilers\IO;
 
 use Artvys\Search\Engines\Compiled\Compilers\IO\Builder;
 use Artvys\Search\Engines\Compiled\SearchSource;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase {
@@ -11,6 +12,9 @@ class BuilderTest extends TestCase {
 	/** @var array<string, SearchSource> */
 	private array $sources;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->builder = new Builder();
 		$this->sources = [

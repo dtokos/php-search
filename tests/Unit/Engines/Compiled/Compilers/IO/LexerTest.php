@@ -3,7 +3,6 @@
 namespace Tests\Unit\Engines\Compiled\Compilers\IO;
 
 use Artvys\Search\Engines\Compiled\Compilers\IO\Lexer;
-use Artvys\Search\Engines\Compiled\Compilers\IO\TokenCollector;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

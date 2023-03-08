@@ -6,6 +6,7 @@ use Artvys\Search\Engines\Compiled\Compilers\IO\IOCompiler;
 use Artvys\Search\Engines\Compiled\Compilers\IO\IOCompilerFactory;
 use Artvys\Search\Engines\Compiled\SearchSource;
 use Artvys\Search\Engines\Compiled\SearchSourceRegistry;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class IOCompilerIntegrationTest extends TestCase {
@@ -13,6 +14,9 @@ class IOCompilerIntegrationTest extends TestCase {
 	private array $sources;
 	private IOCompiler $compiler;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->sources = [
 			'@' => $this->createStub(SearchSource::class),

@@ -2,7 +2,9 @@
 
 namespace Artvys\Search\Result;
 
-class Breadcrumb implements \JsonSerializable {
+use JsonSerializable;
+
+class Breadcrumb implements JsonSerializable {
 	private string $title;
 	private string $url;
 

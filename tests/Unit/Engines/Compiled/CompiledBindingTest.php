@@ -5,6 +5,7 @@ namespace Tests\Unit\Engines\Compiled;
 use Artvys\Search\Engines\Compiled\CompiledBinding;
 use Artvys\Search\Engines\Compiled\CompiledQuery;
 use Artvys\Search\Engines\Compiled\SearchSource;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class CompiledBindingTest extends TestCase {
@@ -13,6 +14,9 @@ class CompiledBindingTest extends TestCase {
 	private array $sources;
 	private CompiledBinding $binding;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->query = new CompiledQuery(['foo', 'bar', 'baz']);
 		$this->sources = [

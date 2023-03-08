@@ -6,6 +6,7 @@ use Artvys\Search\Engines\Compiled\CompilationResult;
 use Artvys\Search\Engines\Compiled\CompiledBinding;
 use Artvys\Search\Engines\Compiled\CompiledQuery;
 use Artvys\Search\Engines\Compiled\SearchSource;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
 class CompilationResultTest extends TestCase {
@@ -15,6 +16,9 @@ class CompilationResultTest extends TestCase {
 	private array $bindings;
 	private CompilationResult $result;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->sources = [
 			'@' => $this->createStub(SearchSource::class),

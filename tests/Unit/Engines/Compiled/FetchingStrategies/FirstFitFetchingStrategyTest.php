@@ -8,6 +8,7 @@ use Artvys\Search\Engines\Compiled\CompiledQuery;
 use Artvys\Search\Engines\Compiled\FetchingStrategies\FirstFitFetchingStrategy;
 use Artvys\Search\Engines\Compiled\SearchSource;
 use Artvys\Search\SearchResult;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
@@ -16,6 +17,9 @@ class FirstFitFetchingStrategyTest extends TestCase {
 	/** @var array<string, SearchSource&Stub> */
 	private array $sources;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->strategy = new FirstFitFetchingStrategy();
 		$this->sources = [

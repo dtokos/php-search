@@ -95,6 +95,12 @@ class FieldTest extends TestCase {
 		];
 	}
 
+	/**
+	 * @param Field $field
+	 * @param string[] $tokens
+	 * @param string $expected
+	 * @return void
+	 */
 	private function assertResult(Field $field, array $tokens, string $expected): void {
 		$builder = new ResultQueryBuilderStub();
 		$field->apply($builder, new CompiledQuery($tokens));

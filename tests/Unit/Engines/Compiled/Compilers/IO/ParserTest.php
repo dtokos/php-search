@@ -5,6 +5,7 @@ namespace Tests\Unit\Engines\Compiled\Compilers\IO;
 use Artvys\Search\Engines\Compiled\Compilers\IO\Parser;
 use Artvys\Search\Engines\Compiled\Compilers\IO\SearchSourceProvider;
 use Artvys\Search\Engines\Compiled\SearchSource;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use Tests\Stubs\Engines\Compiled\Compilers\IO\ResultBuilderStub;
 
@@ -14,6 +15,9 @@ class ParserTest extends TestCase {
 	private ResultBuilderStub $builder;
 	private Parser $parser;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function setUp(): void {
 		$this->sources = [
 			'@' => $this->createStub(SearchSource::class),
