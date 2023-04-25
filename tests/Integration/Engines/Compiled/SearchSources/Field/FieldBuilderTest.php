@@ -26,7 +26,7 @@ class FieldBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function andProvider(): array {
+	public static function andProvider(): array {
 		return [
 			[[], 'AND ()'],
 			[['lorem'], 'AND (foo == lorem, bar contains lorem)'],
@@ -48,7 +48,7 @@ class FieldBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function orProvider(): array {
+	public static function orProvider(): array {
 		return [
 			[[], 'OR ()'],
 			[['lorem'], 'OR (foo == lorem, bar contains lorem)'],
@@ -80,7 +80,7 @@ class FieldBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function unlessProvider(): array {
+	public static function unlessProvider(): array {
 		return [
 			[[], 'AND ()'],
 			[['lorem'], 'AND (bar contains lorem, qux endsWith lorem)'],
@@ -112,7 +112,7 @@ class FieldBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function ifProvider(): array {
+	public static function ifProvider(): array {
 		return [
 			[[], 'AND ()'],
 			[['lorem'], 'AND (foo == lorem, baz startsWith lorem)'],
@@ -143,7 +143,7 @@ class FieldBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function example1Provider(): array {
+	public static function example1Provider(): array {
 		return [
 			[[], 'AND (AND (OR ()))'],
 			[['lorem'], 'AND (foo == lorem, AND (OR (bar contains lorem, baz startsWith lorem)))'],

@@ -20,7 +20,7 @@ class FieldTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function startsWithProvider(): array {
+	public static function startsWithProvider(): array {
 		return [
 			[[], ''],
 			[['lorem'], 'foo startsWith lorem'],
@@ -49,7 +49,7 @@ class FieldTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function equalsProvider(): array {
+	public static function equalsProvider(): array {
 		return [
 			[[], ''],
 			[['lorem'], 'foo == lorem'],
@@ -68,7 +68,7 @@ class FieldTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function endsWithProvider(): array {
+	public static function endsWithProvider(): array {
 		return [
 			[[], ''],
 			[['lorem'], 'foo endsWith lorem'],
@@ -87,7 +87,7 @@ class FieldTest extends TestCase {
 	}
 
 	/** @return array{array{string[], string}} */
-	public function containsProvider(): array {
+	public static function containsProvider(): array {
 		return [
 			[[], ''],
 			[['lorem'], 'foo contains lorem'],

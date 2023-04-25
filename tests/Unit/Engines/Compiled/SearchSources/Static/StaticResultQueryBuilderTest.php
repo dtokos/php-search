@@ -29,20 +29,20 @@ class StaticResultQueryBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{SearchResult[], Generator<SearchResult>, string}} */
-	private function equalsProvider(): array {
+	public static function equalsProvider(): array {
 		return [
-			$this->provide('title', [0], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('description', [2], ['foobar', 'bar', 'foo', 'baz']),
-			$this->provide('url', [2], ['baz', 'foobar', 'foo', 'bar']),
-			$this->provide('thumbnailUrl', [3], ['bar', 'baz', 'foobar', 'foo']),
-			$this->provide('helpText', [0], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('breadcrumbs.title', [3], ['foobar', 'baz', 'bar', 'foo']),
-			$this->provide('breadcrumbs.url', [0], ['foo', 'foobar', 'baz', 'bar']),
-			$this->provide('tags.title', [1], ['bar', 'foo', 'foobar', 'baz']),
-			$this->provide('tags.url', [1], ['baz', 'foo', 'bar', 'foobar']),
-			$this->provide('tags.color', [3], ['foobar', 'bar', 'baz', 'foo']),
-			$this->provide('links.title', [0], ['foo', 'foobar', 'bar', 'baz']),
-			$this->provide('links.url', [3], ['baz', 'bar', 'foobar', 'foo']),
+			self::provide('title', [0], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('description', [2], ['foobar', 'bar', 'foo', 'baz']),
+			self::provide('url', [2], ['baz', 'foobar', 'foo', 'bar']),
+			self::provide('thumbnailUrl', [3], ['bar', 'baz', 'foobar', 'foo']),
+			self::provide('helpText', [0], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('breadcrumbs.title', [3], ['foobar', 'baz', 'bar', 'foo']),
+			self::provide('breadcrumbs.url', [0], ['foo', 'foobar', 'baz', 'bar']),
+			self::provide('tags.title', [1], ['bar', 'foo', 'foobar', 'baz']),
+			self::provide('tags.url', [1], ['baz', 'foo', 'bar', 'foobar']),
+			self::provide('tags.color', [3], ['foobar', 'bar', 'baz', 'foo']),
+			self::provide('links.title', [0], ['foo', 'foobar', 'bar', 'baz']),
+			self::provide('links.url', [3], ['baz', 'bar', 'foobar', 'foo']),
 		];
 	}
 
@@ -61,20 +61,20 @@ class StaticResultQueryBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{SearchResult[], Generator<SearchResult>, string}} */
-	private function containsProvider(): array {
+	public static function containsProvider(): array {
 		return [
-			$this->provide('title', [1, 2, 3], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('description', [0, 1, 3], ['foobar', 'bar', 'foo', 'baz']),
-			$this->provide('url', [0, 1, 3], ['baz', 'foobar', 'foo', 'bar']),
-			$this->provide('thumbnailUrl', [0, 1, 2], ['bar', 'baz', 'foobar', 'foo']),
-			$this->provide('helpText', [1, 2, 3], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('breadcrumbs.title', [0, 1, 2], ['foobar', 'baz', 'bar', 'foo']),
-			$this->provide('breadcrumbs.url', [1, 2, 3], ['foo', 'foobar', 'baz', 'bar']),
-			$this->provide('tags.title', [0, 2, 3], ['bar', 'foo', 'foobar', 'baz']),
-			$this->provide('tags.url', [0, 2, 3], ['baz', 'foo', 'bar', 'foobar']),
-			$this->provide('tags.color', [0, 1, 2], ['foobar', 'bar', 'baz', 'foo']),
-			$this->provide('links.title', [1, 2, 3], ['foo', 'foobar', 'bar', 'baz']),
-			$this->provide('links.url', [0, 1, 2], ['baz', 'bar', 'foobar', 'foo']),
+			self::provide('title', [1, 2, 3], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('description', [0, 1, 3], ['foobar', 'bar', 'foo', 'baz']),
+			self::provide('url', [0, 1, 3], ['baz', 'foobar', 'foo', 'bar']),
+			self::provide('thumbnailUrl', [0, 1, 2], ['bar', 'baz', 'foobar', 'foo']),
+			self::provide('helpText', [1, 2, 3], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('breadcrumbs.title', [0, 1, 2], ['foobar', 'baz', 'bar', 'foo']),
+			self::provide('breadcrumbs.url', [1, 2, 3], ['foo', 'foobar', 'baz', 'bar']),
+			self::provide('tags.title', [0, 2, 3], ['bar', 'foo', 'foobar', 'baz']),
+			self::provide('tags.url', [0, 2, 3], ['baz', 'foo', 'bar', 'foobar']),
+			self::provide('tags.color', [0, 1, 2], ['foobar', 'bar', 'baz', 'foo']),
+			self::provide('links.title', [1, 2, 3], ['foo', 'foobar', 'bar', 'baz']),
+			self::provide('links.url', [0, 1, 2], ['baz', 'bar', 'foobar', 'foo']),
 		];
 	}
 
@@ -93,20 +93,20 @@ class StaticResultQueryBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{SearchResult[], Generator<SearchResult>, string}} */
-	private function startsWithProvider(): array {
+	public static function startsWithProvider(): array {
 		return [
-			$this->provide('title', [1, 2], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('description', [1, 3], ['foobar', 'bar', 'foo', 'baz']),
-			$this->provide('url', [0, 3], ['baz', 'foobar', 'foo', 'bar']),
-			$this->provide('thumbnailUrl', [0, 1], ['bar', 'baz', 'foobar', 'foo']),
-			$this->provide('helpText', [1, 2], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('breadcrumbs.title', [1, 2], ['foobar', 'baz', 'bar', 'foo']),
-			$this->provide('breadcrumbs.url', [2, 3], ['foo', 'foobar', 'baz', 'bar']),
-			$this->provide('tags.title', [0, 3], ['bar', 'foo', 'foobar', 'baz']),
-			$this->provide('tags.url', [0, 2], ['baz', 'foo', 'bar', 'foobar']),
-			$this->provide('tags.color', [1, 2], ['foobar', 'bar', 'baz', 'foo']),
-			$this->provide('links.title', [2, 3], ['foo', 'foobar', 'bar', 'baz']),
-			$this->provide('links.url', [0, 1], ['baz', 'bar', 'foobar', 'foo']),
+			self::provide('title', [1, 2], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('description', [1, 3], ['foobar', 'bar', 'foo', 'baz']),
+			self::provide('url', [0, 3], ['baz', 'foobar', 'foo', 'bar']),
+			self::provide('thumbnailUrl', [0, 1], ['bar', 'baz', 'foobar', 'foo']),
+			self::provide('helpText', [1, 2], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('breadcrumbs.title', [1, 2], ['foobar', 'baz', 'bar', 'foo']),
+			self::provide('breadcrumbs.url', [2, 3], ['foo', 'foobar', 'baz', 'bar']),
+			self::provide('tags.title', [0, 3], ['bar', 'foo', 'foobar', 'baz']),
+			self::provide('tags.url', [0, 2], ['baz', 'foo', 'bar', 'foobar']),
+			self::provide('tags.color', [1, 2], ['foobar', 'bar', 'baz', 'foo']),
+			self::provide('links.title', [2, 3], ['foo', 'foobar', 'bar', 'baz']),
+			self::provide('links.url', [0, 1], ['baz', 'bar', 'foobar', 'foo']),
 		];
 	}
 
@@ -125,20 +125,20 @@ class StaticResultQueryBuilderTest extends TestCase {
 	}
 
 	/** @return array{array{SearchResult[], Generator<SearchResult>, string}} */
-	private function endsWithProvider(): array {
+	public static function endsWithProvider(): array {
 		return [
-			$this->provide('title', [0], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('description', [2], ['foobar', 'bar', 'foo', 'baz']),
-			$this->provide('url', [2], ['baz', 'foobar', 'foo', 'bar']),
-			$this->provide('thumbnailUrl', [3], ['bar', 'baz', 'foobar', 'foo']),
-			$this->provide('helpText', [0], ['foo', 'bar', 'baz', 'foobar']),
-			$this->provide('breadcrumbs.title', [3], ['foobar', 'baz', 'bar', 'foo']),
-			$this->provide('breadcrumbs.url', [0], ['foo', 'foobar', 'baz', 'bar']),
-			$this->provide('tags.title', [1], ['bar', 'foo', 'foobar', 'baz']),
-			$this->provide('tags.url', [1], ['baz', 'foo', 'bar', 'foobar']),
-			$this->provide('tags.color', [3], ['foobar', 'bar', 'baz', 'foo']),
-			$this->provide('links.title', [0], ['foo', 'foobar', 'bar', 'baz']),
-			$this->provide('links.url', [3], ['baz', 'bar', 'foobar', 'foo']),
+			self::provide('title', [0], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('description', [2], ['foobar', 'bar', 'foo', 'baz']),
+			self::provide('url', [2], ['baz', 'foobar', 'foo', 'bar']),
+			self::provide('thumbnailUrl', [3], ['bar', 'baz', 'foobar', 'foo']),
+			self::provide('helpText', [0], ['foo', 'bar', 'baz', 'foobar']),
+			self::provide('breadcrumbs.title', [3], ['foobar', 'baz', 'bar', 'foo']),
+			self::provide('breadcrumbs.url', [0], ['foo', 'foobar', 'baz', 'bar']),
+			self::provide('tags.title', [1], ['bar', 'foo', 'foobar', 'baz']),
+			self::provide('tags.url', [1], ['baz', 'foo', 'bar', 'foobar']),
+			self::provide('tags.color', [3], ['foobar', 'bar', 'baz', 'foo']),
+			self::provide('links.title', [0], ['foo', 'foobar', 'bar', 'baz']),
+			self::provide('links.url', [3], ['baz', 'bar', 'foobar', 'foo']),
 		];
 	}
 
@@ -186,11 +186,11 @@ class StaticResultQueryBuilderTest extends TestCase {
 	 * @param string[] $values
 	 * @return SearchResult[]
 	 */
-	private function makeResults(string $field, array $values): array {
-		return array_map(fn(string $value) => $this->makeResult($field, $value), $values);
+	private static function makeResults(string $field, array $values): array {
+		return array_map(fn(string $value) => self::makeResult($field, $value), $values);
 	}
 
-	private function makeResult(string $field, string $value): SearchResult {
+	private static function makeResult(string $field, string $value): SearchResult {
 		$r = SearchResult::make('', '', '');
 
 		return match ($field) {
@@ -216,8 +216,8 @@ class StaticResultQueryBuilderTest extends TestCase {
 	 * @param string[] $values
 	 * @return array{SearchResult[], Generator<SearchResult>, string}
 	 */
-	private function provide(string $field, array $expected, array $values): array {
-		return $this->provideResults($field, $expected, $this->makeResults($field, $values));
+	private static function provide(string $field, array $expected, array $values): array {
+		return self::provideResults($field, $expected, self::makeResults($field, $values));
 	}
 
 	/**
@@ -226,10 +226,10 @@ class StaticResultQueryBuilderTest extends TestCase {
 	 * @param SearchResult[] $allResults
 	 * @return array{SearchResult[], Generator<SearchResult>, string}
 	 */
-	private function provideResults(string $field, array $expected, array $allResults): array {
+	private static function provideResults(string $field, array $expected, array $allResults): array {
 		return [
-			$this->pick($expected, $allResults),
-			$this->toGenerator($allResults),
+			self::pick($expected, $allResults),
+			self::toGenerator($allResults),
 			$field,
 		];
 	}
@@ -239,7 +239,7 @@ class StaticResultQueryBuilderTest extends TestCase {
 	 * @param SearchResult[] $allResults
 	 * @return SearchResult[]
 	 */
-	private function pick(array $expected, array $allResults): array {
+	private static function pick(array $expected, array $allResults): array {
 		return array_map(fn(int $index) => $allResults[$index], $expected);
 	}
 
@@ -247,7 +247,7 @@ class StaticResultQueryBuilderTest extends TestCase {
 	 * @param SearchResult[] $results
 	 * @return Generator<SearchResult>
 	 */
-	private function toGenerator(array $results): Generator {
+	private static function toGenerator(array $results): Generator {
 		foreach ($results as $result) yield $result;
 	}
 }

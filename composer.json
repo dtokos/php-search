@@ -2,6 +2,7 @@
     "name": "artvys/search",
     "description": "Simple search library written in php",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Artvys\\Search\\": "src/"

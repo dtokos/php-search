@@ -29,7 +29,7 @@ class OrResultQueryScopeGroupTest extends TestCase {
 	}
 
 	/** @return array{array{Field[], string}} */
-	public function example1Provider(): array {
+	public static function example1Provider(): array {
 		return [
 			[[], ''],
 			[[Field::equals('foo')], 'OR (foo == lorem)'],
