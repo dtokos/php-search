@@ -397,4 +397,4 @@ $registry->register(new CachedSearchSource(new UsersSearchSource()), ['#']);
 
 # 7. First party adapters
 
-Yet to be written.
+- WIP: [artvys/cake-php](https://github.com/dtokos/php-cake-search) - CakePHP adapter for artvys/search package
